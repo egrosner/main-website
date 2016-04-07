@@ -14,16 +14,27 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'idea'
+apply plugin: 'war'
 
 jar {
 	baseName = 'main-website'
 	version = '0.0.1-SNAPSHOT'
 }
+
+war {
+	baseName = 'main-website'
+	version =  '0.0.3-SNAPSHOT'
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+}
+
+configurations {
+	providedRuntime
 }
 
 
@@ -32,6 +43,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-actuator")
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	compile('org.projectlombok:lombok:1.16.8')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
