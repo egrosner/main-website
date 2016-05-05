@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+		<link rel="icon" type="image/png" href="images/favicon.png" />
 	</head>
 	<body>
 
@@ -33,11 +35,11 @@
 					<article class="post" th:include="fragments/post :: main-post (${curitem})" />
 				</th:block>
 
-				<!-- Pagination -->
+				<!-- Pagination
 				<ul class="actions pagination">
 					<li><a href="" class="disabled button big previous">Previous Page</a></li>
 					<li><a href="#" class="button big next">Next Page</a></li>
-				</ul>
+				</ul> -->
 
 			</div>
 
@@ -46,7 +48,7 @@
 
 				<!-- Intro -->
 				<section id="intro">
-					<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+					<a href="#" class="logo"><img src="images/eg_logo.png" alt="" /></a>
 					<header>
 						<h3>erichgrosner.com - blog</h3>
 						<p>welcome to my little page in the corner of the internet</p>
@@ -62,7 +64,7 @@
 									<h3><a href="#" th:text="${curitem.getTitle()}"></a></h3>
 									<time class="published" datetime="2015-10-20">October 20, 2015</time>
 								</header>
-								<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+								<a href="#" class="image"><img th:src="${'images/'+curitem.getPostPhoto()}" alt="" /></a>
 							</article>
 						</li>
 					</ul>
@@ -77,11 +79,8 @@
 				<!-- Footer -->
 				<section id="footer">
 					<ul class="icons">
-						<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-						<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+						<li><a href="mailto:egrosner@gmail.com" class="fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 					<p class="copyright">&copy; Erich Grosner.</p>
 				</section>

@@ -2,17 +2,27 @@ package com.erichgrosner.model;
 
 import lombok.*;
 
-import java.util.Date;
+import org.joda.time.*;
 
 /**
  * Created by egros on 4/5/2016.
  */
+@Builder
+@Data
 public class BlogPost {
-    @Getter @Setter private String title;
-    @Getter @Setter private String body;
-    @Getter @Setter private Date postDate;
-    @Getter @Setter private String titleCaption;
-    @Getter @Setter private String category;
-    @Getter @Setter private String userName;
+    private String title;
+    private String body;
+    private DateTime postDate;
+
+    public String getPostDateDisplay() {
+        return postDate.toString("YYYY-MM-dd");
+    }
+
+    private String titleCaption;
+    private String category;
+    private String userName;
+    private String userAvatar;
+
+    private String postPhoto;
 
 }

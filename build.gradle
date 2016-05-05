@@ -6,7 +6,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
@@ -14,16 +14,27 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'idea'
-apply plugin: 'war'
+apply plugin: 'java-library-distribution'
 
 jar {
 	baseName = 'main-website'
-	version = '0.0.1-SNAPSHOT'
+	version = '0.0.5-SNAPSHOT'
 }
 
-war {
-	baseName = 'main-website'
-	version =  '0.0.3-SNAPSHOT'
+distributions {
+    main {
+        baseName = "${jar.baseName}-${jar.version}"
+
+        contents {
+			exclude '**/lib/**'
+			into '/'
+        }
+		/*eachFile { details ->
+			if (details.relativePath.toString().contains('/lib')) {
+				details.exclude()
+			}
+		}*/
+    }
 }
 
 sourceCompatibility = 1.8
@@ -43,7 +54,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-actuator")
-	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	compile('joda-time:joda-time:2.9.3')
 	compile('org.projectlombok:lombok:1.16.8')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }

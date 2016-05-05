@@ -10,16 +10,16 @@
                 <p th:text="${curitem.getTitleCaption()}"></p>
             </div>
             <div class="meta">
-                <time class="published" datetime="2015-11-01">November 1, 2015</time>
+                <time class="published" th:text="${curitem.getPostDateDisplay()}">November 1, 2015</time>
                 <a href="#" class="author"><span class="name" th:text="${curitem.getUserName()}"></span><img src="images/avatar.jpg" alt="" /></a>
             </div>
         </header>
-        <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+        <a href="#" class="image featured"><img th:src="${'images/'+curitem.getPostPhoto()}" alt="" /></a>
         <p th:text="${curitem.getBody()}"></p>
         <footer>
-            <ul class="actions">
+            <!--<ul class="actions">
                 <li><a href="#" class="button big">Continue Reading</a></li>
-            </ul>
+            </ul>-->
             <ul class="stats">
                 <li><a href="#" th:text="${curitem.getCategory()}"></a></li>
                 <li><a href="#" class="icon fa-heart">28</a></li>

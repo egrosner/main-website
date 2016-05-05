@@ -1,6 +1,7 @@
 package com.erichgrosner;
 
 import com.erichgrosner.model.BlogPost;
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +22,15 @@ public class HomeController {
     public String index(Model model) {
 
         List<BlogPost> posts = new ArrayList<BlogPost>();
-        val curPost = new BlogPost();
-        curPost.setBody("hey my first blog post!");
-        curPost.setTitle("My first Post!");
-        curPost.setTitleCaption("many more to come");
-        curPost.setCategory("General");
-        curPost.setUserName("Erich Grosner");
-        curPost.setPostDate(Date.from(Instant.now()));
+        BlogPost curPost = BlogPost.builder()
+                .body("hey my first blog post!")
+                .title("My first Post!")
+                .titleCaption("many more to come")
+                .category("General")
+                .userName("Erich Grosner")
+                .postDate(DateTime.now())
+                .postPhoto("mountainme.jpg")
+                .build();
         posts.add(curPost);
 
         model.addAttribute("items", posts);
