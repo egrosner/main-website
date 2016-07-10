@@ -28,7 +28,7 @@
 			<section id="menu" th:include="fragments/menu :: main-menu"></section>
 
 			<!-- Main -->
-			<div id="main">
+			<div id="main" layout:fragment="content">
 
 				<!-- Post -->
 				<th:block th:each="curitem : ${items}">

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorator="index">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin</title>
+</head>
+<body>
+    <div class="post" layout:fragment="content">
+        <div>Create a new post</div>
+        <form action="#" th:action="@{/savePost}" th:object="${newBlogPost}" method="post">
+            <div>
+                <label>Title:</label>
+                <input id="post-title" type="text" th:field="*{title}" />
+            </div>
+            <div>
+                <label>Title Caption:</label>
+                <input id="post-title-caption" type="text" th:field="*{titleCaption}" />
+            </div>
+            <div>
+                <label>Body:</label>
+                <textarea id="post-body" th:field="*{body}" />
+            </div>
+            <div>
+                <label>Category:</label>
+                <select th:field="*{category}">
+                    <option th:value="${'General'}">General</option>
+                    <option th:value="${'Other'}">Other</option>
+                </select>
+            </div>
+            <div>
+                Post Photo:
+            </div>
+            <button id="save-button">Save</button>
+        </form>
+    </div>
+</body>
+</html>

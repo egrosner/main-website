@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.3.3.RELEASE'
+		springBootVersion = '1.3.5.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -14,28 +14,29 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: 'idea'
-apply plugin: 'java-library-distribution'
+//apply plugin: 'java-library-distribution'
 
 jar {
 	baseName = 'main-website'
-	version = '0.0.5-SNAPSHOT'
+	version = '0.0.12-SNAPSHOT'
+    archiveName = 'service.jar'
 }
 
-distributions {
-    main {
-        baseName = "${jar.baseName}-${jar.version}"
+//distributions {
+    //main {
+        //baseName = "${jar.baseName}-${jar.version}"
 
-        contents {
-			exclude '**/lib/**'
-			into '/'
-        }
+        //contents {
+		//	exclude '**/lib/**'
+		//	into '/'
+        //}
 		/*eachFile { details ->
 			if (details.relativePath.toString().contains('/lib')) {
 				details.exclude()
 			}
 		}*/
-    }
-}
+    //}
+//}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -54,6 +55,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.boot:spring-boot-starter-security")
 	compile('joda-time:joda-time:2.9.3')
 	compile('org.projectlombok:lombok:1.16.8')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 

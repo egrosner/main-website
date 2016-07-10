@@ -7,6 +7,8 @@ import org.joda.time.*;
 /**
  * Created by egros on 4/5/2016.
  */
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Data
 public class BlogPost {
@@ -15,6 +17,9 @@ public class BlogPost {
     private DateTime postDate;
 
     public String getPostDateDisplay() {
+        if(postDate == null) {
+            postDate = DateTime.now();
+        }
         return postDate.toString("YYYY-MM-dd");
     }
 
